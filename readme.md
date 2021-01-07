@@ -1,4 +1,4 @@
-# SillyTodo.NET
+# SillyTodo.Net
 
 Demo application covering:
 
