@@ -2,10 +2,10 @@
 
 Demo application covering:
 
-* Records (C# 9 & .Net 5.0)
+* Records (C# 9)
 * Simple Svelte frontend
 * [Mediator](https://github.com/jbogard/MediatR) (Mediator pattern) and CQRS Pattern 
-* Vertical Slice Architecture  
+* Vertical Slice Architecture ❤️
 * Modular Monolith (more modules and integrations between modules are coming...)
 
 
