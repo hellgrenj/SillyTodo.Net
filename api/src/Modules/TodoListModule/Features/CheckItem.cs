@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using api.Infrastructure.Persistence;
 using MediatR;
-
 using System.Linq;
 using api.Exceptions;
 using api.Modules.TodoListModule.Domain.Models;

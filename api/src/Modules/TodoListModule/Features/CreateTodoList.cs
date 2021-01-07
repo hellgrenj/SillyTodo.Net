@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using api.Infrastructure.Persistence;
 using MediatR;
 using api.Modules.TodoListModule.Domain.Models;
-using System;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
 

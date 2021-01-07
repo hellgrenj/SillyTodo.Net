@@ -1,0 +1,42 @@
+
+
+
+
+using System;
+using System.Linq;
+using System.Threading;
+using api.Infrastructure.Persistence;
+using api.Modules.TodoListModule.Feature;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+using Xunit;
+
+namespace tests
+{
+    public class UnitTest1
+    {
+        DbContextOptions<TodoListContext> InMemoryOptions()
+        {
+            return new DbContextOptionsBuilder<TodoListContext>().UseInMemoryDatabase(databaseName: "Test_Database").Options;
+        }
+        ILogger<CreateTodoListHandler> GetMockedLogger()
+        {
+            return Mock.Of<ILogger<CreateTodoListHandler>>();
+        }
+        [Fact]
+        public async System.Threading.Tasks.Task CreateTodoList_creates_a_valid_todolistAsync()
+        {
+            using (var context = new TodoListContext(InMemoryOptions()))
+            {
+                var logger = GetMockedLogger();
+                var handler = new CreateTodoListHandler(context, logger);
+                var id = await handler.Handle(new CreateNewTodoListCommand("A new todo list"), default(CancellationToken));
+                
+
+                Assert.Equal(1, id);
+                Assert.Equal("A new todo list", context.TodoLists.Where(t => t.Id == 1).SingleOrDefault().Name);
+            }
+        }
+    }
+}

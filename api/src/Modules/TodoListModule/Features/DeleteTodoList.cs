@@ -2,8 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using api.Infrastructure.Persistence;
 using MediatR;
-using api.Modules.TodoListModule.Domain;
-using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;

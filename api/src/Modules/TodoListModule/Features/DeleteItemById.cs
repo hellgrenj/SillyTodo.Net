@@ -2,8 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using api.Infrastructure.Persistence;
 using MediatR;
-
-using System;
 using System.Linq;
 using FluentValidation;
 using api.Exceptions;

@@ -10,9 +10,6 @@ namespace api.Infrastructure.Persistence
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<TodoListItem> TodoListItems { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-          => optionsBuilder.UseNpgsql("Host=postgres;Database=silly;Username=silly;Password=silly");
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TodoList>().ToTable("TodoList");

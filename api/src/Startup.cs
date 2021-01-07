@@ -38,7 +38,10 @@ namespace api
                         .AllowAnyMethod()
                         .AllowAnyHeader();
             }));
-            services.AddDbContext<TodoListContext>();
+            
+            var sqlConnectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING");
+            services.AddDbContext<TodoListContext>(options => options.UseNpgsql(sqlConnectionString));
+            
             services.AddMediatR(typeof(Startup));
             services.AddControllers(options =>
             {
