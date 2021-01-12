@@ -13,7 +13,7 @@ RUN ls -la ./src
 RUN npm run build
 
 
-FROM nginx:stable-perl as runtime
+FROM nginx:1.19.2-alpine as runtime
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build ./usr/src/app/public /var/share/nginx/html
 EXPOSE 80
