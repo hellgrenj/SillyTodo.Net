@@ -1,0 +1,30 @@
+name: sillytodonet
+
+services:
+- name: frontend
+  github:
+    repo: hellgrenj/SillyTodo.Net
+    branch: master
+    deploy_on_push: true
+  source_dir: web
+  dockerfile_path: web/Dockerfile
+  routes:
+  - path: /
+  
+- name: api
+  github:
+    repo: hellgrenj/SillyTodo.Net
+    branch: master
+    deploy_on_push: true
+  source_dir: api/src
+  dockerfile_path: api/src/Dockerfile
+  routes:
+  - path: /api
+
+databases:
+- name: silly
+  engine: PG
+  version: "12"
+  production: false
+  db_name: silly
+  db_user: silly
