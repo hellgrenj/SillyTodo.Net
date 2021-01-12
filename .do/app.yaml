@@ -1,30 +1,43 @@
+databases:
+- db_name: silly
+  db_user: silly
+  engine: PG
+  name: silly
+  version: "12"
 name: sillytodonet
-
+region: ams
 services:
-- name: frontend
+- cors:
+    allow_origins:
+    - regex: /*
+  dockerfile_path: web/Dockerfile
   github:
-    repo: hellgrenj/SillyTodo.Net
     branch: master
     deploy_on_push: true
-  source_dir: web
-  dockerfile_path: web/Dockerfile
+    repo: hellgrenj/SillyTodo.Net
+  http_port: 80
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: frontend
   routes:
   - path: /
-  
-- name: api
+  source_dir: web
+- cors:
+    allow_origins:
+    - regex: /*
+  dockerfile_path: api/src/Dockerfile
+  envs:
+  - key: POSTGRES_CONNECTION_STRING
+    scope: RUN_AND_BUILD_TIME
+    value: Host= REPLACE WITH REAL HOST ;PORT=25060;Database=silly;Username=silly;Password=REPLACE WITH REAL PWD;SSLMODE=Require;TrustServerCertificate=true # replace host and password
   github:
-    repo: hellgrenj/SillyTodo.Net
     branch: master
     deploy_on_push: true
-  source_dir: api/src
-  dockerfile_path: api/src/Dockerfile
+    repo: hellgrenj/SillyTodo.Net
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: api
   routes:
   - path: /api
-
-databases:
-- name: silly
-  engine: PG
-  version: "12"
-  production: false
-  db_name: silly
-  db_user: silly
+  source_dir: api/src
