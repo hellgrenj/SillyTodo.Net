@@ -1,6 +1,6 @@
 using System;
 
-namespace api.Exceptions
+namespace api.Application.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

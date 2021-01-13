@@ -1,14 +1,14 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Infrastructure.Persistence;
+using api.Persistence;
 using MediatR;
 using System.Linq;
-using api.Modules.TodoListModule.Domain.Models;
+using api.Application.Modules.TodoListModule.Domain.Models;
 using FluentValidation;
-using api.Exceptions;
+using api.Application.Exceptions;
 using Microsoft.Extensions.Logging;
 
-namespace api.Modules.TodoListModule.Feature
+namespace api.Application.Modules.TodoListModule.Features
 {
     public record AddItemToListCommand(int ListId, string Name, bool Done) : IRequest<int>;
 

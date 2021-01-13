@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using api.Modules.TodoListModule.Feature;
-using api.Modules.TodoListModule.Domain.Models;
+using api.Application.Modules.TodoListModule.Features;
+using api.Application.Modules.TodoListModule.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

@@ -1,13 +1,13 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Infrastructure.Persistence;
+using api.Persistence;
 using MediatR;
 using System.Linq;
-using api.Exceptions;
-using api.Modules.TodoListModule.Domain.Models;
+using api.Application.Exceptions;
+using api.Application.Modules.TodoListModule.Domain.Models;
 using Microsoft.Extensions.Logging;
 
-namespace api.Modules.TodoListModule.Feature
+namespace api.Application.Modules.TodoListModule.Features
 {
     public record CheckItemCommand(int Id, bool Done) : IRequest<int>;
     public class CheckItemHandler : IRequestHandler<CheckItemCommand, int>

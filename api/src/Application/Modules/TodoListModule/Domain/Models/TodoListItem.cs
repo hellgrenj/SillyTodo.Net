@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace api.Modules.TodoListModule.Domain.Models
+namespace api.Application.Modules.TodoListModule.Domain.Models
 {
     public class TodoListItem
     {

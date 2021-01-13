@@ -1,15 +1,15 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Infrastructure.Persistence;
+using api.Persistence;
 using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
-using api.Modules.TodoListModule.Domain.Models;
-using api.Exceptions;
+using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Application.Exceptions;
 using Microsoft.Extensions.Logging;
 
-namespace api.Modules.TodoListModule.Feature
+namespace api.Application.Modules.TodoListModule.Features
 {
     public record DeleteTodoListByIdCommand(int Id) : IRequest<int>;
 
@@ -25,7 +25,7 @@ namespace api.Modules.TodoListModule.Feature
 
         public Task<int> Handle(DeleteTodoListByIdCommand cmd, CancellationToken cancellationToken)
         {
-            var listToBeDeleted = _db.TodoLists.Include(l => l.Items).Where(l => l.Id == cmd.Id).SingleOrDefault();
+            var listToBeDeleted = _db.TodoLists.Where(l => l.Id == cmd.Id).SingleOrDefault();
             if (listToBeDeleted == null)
                 throw new EntityNotFoundException(nameof(TodoList), cmd.Id);
 

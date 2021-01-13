@@ -1,12 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Infrastructure.Persistence;
+using api.Persistence;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
-using api.Modules.TodoListModule.Domain.Models;
+using api.Application.Modules.TodoListModule.Domain.Models;
 
-namespace api.Modules.TodoListModule.Feature
+namespace api.Application.Modules.TodoListModule.Features
 {
 
     public record GetAllTodoListsQuery () : IRequest<List<TodoList>>;

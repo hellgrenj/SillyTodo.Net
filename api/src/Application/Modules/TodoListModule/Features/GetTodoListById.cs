@@ -1,13 +1,13 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Infrastructure.Persistence;
+using api.Persistence;
 using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using api.Modules.TodoListModule.Domain.Models;
-using api.Exceptions;
+using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Application.Exceptions;
 
-namespace api.Modules.TodoListModule.Feature
+namespace api.Application.Modules.TodoListModule.Features
 {
     public record GetTodoListByIdQuery(int Id) : IRequest<TodoList>;
     public class GetTodoListByIdHandler : IRequestHandler<GetTodoListByIdQuery, TodoList>

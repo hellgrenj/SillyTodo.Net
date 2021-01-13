@@ -1,8 +1,8 @@
 
-using api.Modules.TodoListModule.Domain.Models;
+using api.Application.Modules.TodoListModule.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Infrastructure.Persistence
+namespace api.Persistence
 {
     public class TodoListContext : DbContext
     {

@@ -1,6 +1,6 @@
 using System;
 using System.Net;
-using api.Exceptions;
+using api.Application.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
