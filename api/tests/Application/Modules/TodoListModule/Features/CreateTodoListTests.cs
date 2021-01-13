@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace tests
+namespace Application.Modules.TodoListModule.Features.Tests
 {
     public class UnitTest1
     {
