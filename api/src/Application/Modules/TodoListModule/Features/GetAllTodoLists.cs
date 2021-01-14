@@ -5,6 +5,7 @@ using MediatR;
 using System.Collections.Generic;
 using System.Linq;
 using api.Application.Modules.TodoListModule.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Application.Modules.TodoListModule.Features
 {
@@ -15,9 +16,9 @@ namespace api.Application.Modules.TodoListModule.Features
         private readonly TodoListContext _db;
         public GetAllTodoListsHandler(TodoListContext db) => _db = db;
 
-        public Task<List<TodoList>> Handle(GetAllTodoListsQuery query, CancellationToken cancellationToken)
+        public async Task<List<TodoList>> Handle(GetAllTodoListsQuery query, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_db.TodoLists.ToList());
+            return await _db.TodoLists.ToListAsync();
         }
     }
 }

@@ -29,13 +29,13 @@ namespace api.Application.Modules.TodoListModule.Features
             _db = db;
         }
 
-        public Task<int> Handle(CreateNewTodoListCommand cmd, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateNewTodoListCommand cmd, CancellationToken cancellationToken)
         {
             var list = new TodoList() { Name = cmd.Name };
             _db.TodoLists.Add(list);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             _logger.LogInformation($"A new todo list with name {cmd.Name} was created");
-            return Task.FromResult(list.Id);
+            return list.Id;
         }
 
     }

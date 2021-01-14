@@ -14,7 +14,7 @@ using Xunit;
 
 namespace Application.Modules.TodoListModule.Features.Tests
 {
-    public class UnitTest1
+    public class TodoListTests
     {
         DbContextOptions<TodoListContext> InMemoryOptions()
         {

@@ -7,6 +7,7 @@ using FluentValidation;
 using api.Application.Exceptions;
 using api.Application.Modules.TodoListModule.Domain.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Application.Modules.TodoListModule.Features
 {
@@ -21,16 +22,16 @@ namespace api.Application.Modules.TodoListModule.Features
             _db = db;
         }
 
-        public Task<int> Handle(DeleteItemByIdCommand cmd, CancellationToken cancellationToken)
+        public async Task<int> Handle(DeleteItemByIdCommand cmd, CancellationToken cancellationToken)
         {
-            var itemToBeDeleted = _db.TodoListItems.Where(i => i.Id == cmd.Id).SingleOrDefault();
+            var itemToBeDeleted = await _db.TodoListItems.Where(i => i.Id == cmd.Id).SingleOrDefaultAsync();
             if (itemToBeDeleted == null)
                 throw new EntityNotFoundException(nameof(TodoListItem), cmd.Id);
 
             _db.TodoListItems.Remove(itemToBeDeleted);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             _logger.LogInformation($"Item with id {cmd.Id} was deleted");
-            return Task.FromResult(itemToBeDeleted.Id);
+            return itemToBeDeleted.Id;
         }
     }
 }

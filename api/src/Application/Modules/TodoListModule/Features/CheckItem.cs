@@ -6,6 +6,7 @@ using System.Linq;
 using api.Application.Exceptions;
 using api.Application.Modules.TodoListModule.Domain.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Application.Modules.TodoListModule.Features
 {
@@ -20,17 +21,17 @@ namespace api.Application.Modules.TodoListModule.Features
             _db = db;
         }
 
-        public Task<int> Handle(CheckItemCommand cmd, CancellationToken cancellationToken)
+        public async Task<int> Handle(CheckItemCommand cmd, CancellationToken cancellationToken)
         {
-            var item = _db.TodoListItems.Where(i => i.Id == cmd.Id).SingleOrDefault();
+            var item = await _db.TodoListItems.Where(i => i.Id == cmd.Id).SingleOrDefaultAsync();
             if (item == null)
                 throw new EntityNotFoundException(nameof(TodoListItem), cmd.Id);
 
             item.Done = cmd.Done;
             _db.TodoListItems.Update(item);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             _logger.LogInformation($"item(id={cmd.Id}).done changed to {cmd.Done}");
-            return Task.FromResult(item.Id);
+            return item.Id;
         }
 
     }

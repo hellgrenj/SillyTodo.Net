@@ -23,16 +23,16 @@ namespace api.Application.Modules.TodoListModule.Features
             _db = db;
         }
 
-        public Task<int> Handle(DeleteTodoListByIdCommand cmd, CancellationToken cancellationToken)
+        public async Task<int> Handle(DeleteTodoListByIdCommand cmd, CancellationToken cancellationToken)
         {
-            var listToBeDeleted = _db.TodoLists.Where(l => l.Id == cmd.Id).SingleOrDefault();
+            var listToBeDeleted = await _db.TodoLists.Where(l => l.Id == cmd.Id).SingleOrDefaultAsync();
             if (listToBeDeleted == null)
                 throw new EntityNotFoundException(nameof(TodoList), cmd.Id);
 
             _db.TodoLists.Remove(listToBeDeleted);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             _logger.LogInformation($"TodoList {listToBeDeleted.Name} was deleted");
-            return Task.FromResult(listToBeDeleted.Id);
+            return listToBeDeleted.Id;
         }
 
     }

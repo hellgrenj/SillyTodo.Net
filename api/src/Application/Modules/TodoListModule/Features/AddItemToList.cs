@@ -7,6 +7,7 @@ using api.Application.Modules.TodoListModule.Domain.Models;
 using FluentValidation;
 using api.Application.Exceptions;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Application.Modules.TodoListModule.Features
 {
@@ -30,17 +31,17 @@ namespace api.Application.Modules.TodoListModule.Features
             _logger = logger;
         }
 
-        public Task<int> Handle(AddItemToListCommand cmd, CancellationToken cancellationToken)
+        public async Task<int> Handle(AddItemToListCommand cmd, CancellationToken cancellationToken)
         {
-            var list = _db.TodoLists.Where(l => l.Id == cmd.ListId).SingleOrDefault();
+            var list = await _db.TodoLists.Where(l => l.Id == cmd.ListId).SingleOrDefaultAsync();
             if (list == null)
                 throw new EntityNotFoundException(nameof(TodoList), cmd.ListId);
 
             var itemTobeAdded = new TodoListItem { Name = cmd.Name, Done = cmd.Done };
             list.AddItem(itemTobeAdded);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             _logger.LogInformation($"Added item {cmd.Name} to list {list.Name}");
-            return Task.FromResult(itemTobeAdded.Id);
+            return itemTobeAdded.Id;
         }
 
     }
