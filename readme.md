@@ -4,7 +4,7 @@ Demo application covering:
 
 * Records (C# 9)
 * Simple Svelte frontend
-* [Mediator](https://github.com/jbogard/MediatR) (Mediator pattern) and CQRS Pattern 
+* [MediatR](https://github.com/jbogard/MediatR) (Mediator pattern) and CQRS Pattern 
 * combination of: Hexagonal Architecture + Modular Monolith + Vertical Slice Architecture ❤️
 
 
