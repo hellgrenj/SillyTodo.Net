@@ -16,11 +16,11 @@ namespace api.Application.Modules.TodoListModule.Features
 
         public GetTodoListByIdHandler(TodoListContext db) => _db = db;
 
-        public Task<TodoList> Handle(GetTodoListByIdQuery cmd, CancellationToken cancellationToken)
+        public Task<TodoList> Handle(GetTodoListByIdQuery query, CancellationToken cancellationToken)
         {
-            var list = _db.TodoLists.Include(l => l.Items).Where(l => l.Id == cmd.Id).SingleOrDefault();
+            var list = _db.TodoLists.Include(l => l.Items).Where(l => l.Id == query.Id).SingleOrDefault();
             if (list == null)
-                throw new EntityNotFoundException(nameof(TodoList), cmd.Id);
+                throw new EntityNotFoundException(nameof(TodoList), query.Id);
 
             return Task.FromResult(list);
         }

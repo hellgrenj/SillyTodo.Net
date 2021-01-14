@@ -15,7 +15,7 @@ namespace api.Application.Modules.TodoListModule.Features
         private readonly TodoListContext _db;
         public GetAllTodoListsHandler(TodoListContext db) => _db = db;
 
-        public Task<List<TodoList>> Handle(GetAllTodoListsQuery cmd, CancellationToken cancellationToken)
+        public Task<List<TodoList>> Handle(GetAllTodoListsQuery query, CancellationToken cancellationToken)
         {
             return Task.FromResult(_db.TodoLists.ToList());
         }
