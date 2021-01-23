@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using api.Application.Modules.TodoListModule.Features;
-using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Modules.TodoListModule.Features;
+using api.Modules.TodoListModule.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace api.Application.Modules.TodoListModule
+namespace api.Modules.TodoListModule
 {
     [ExceptionHandling]
     [InputValidation]

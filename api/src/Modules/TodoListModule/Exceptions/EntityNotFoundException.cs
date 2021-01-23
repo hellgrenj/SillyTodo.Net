@@ -1,6 +1,6 @@
 using System;
 
-namespace api.Application.Modules.TodoListModule.Exceptions
+namespace api.Modules.TodoListModule.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

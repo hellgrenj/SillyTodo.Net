@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
 using FluentValidation.AspNetCore;
-using api.Application.Modules.TodoListModule;
+using api.Modules.TodoListModule;
 
 namespace api
 {

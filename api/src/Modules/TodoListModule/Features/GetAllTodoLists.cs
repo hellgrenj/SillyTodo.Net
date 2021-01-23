@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;
-using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Modules.TodoListModule.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Application.Modules.TodoListModule.Features
+namespace api.Modules.TodoListModule.Features
 {
 
     public record GetAllTodoListsQuery() : IRequest<List<TodoList>>;

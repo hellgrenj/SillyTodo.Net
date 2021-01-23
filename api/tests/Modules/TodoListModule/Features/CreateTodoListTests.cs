@@ -4,14 +4,14 @@
 
 using System.Linq;
 using System.Threading;
-using api.Application.Modules.TodoListModule;
-using api.Application.Modules.TodoListModule.Features;
+using api.Modules.TodoListModule;
+using api.Modules.TodoListModule.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace Application.Modules.TodoListModule.Features.Tests
+namespace api.Modules.TodoListModule.Features.Tests
 {
     public class TodoListTests
     {

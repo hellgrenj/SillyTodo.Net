@@ -1,10 +1,10 @@
 using System;
 using System.Net;
-using api.Application.Modules.TodoListModule.Exceptions;
+using api.Modules.TodoListModule.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace api.Application.Modules.TodoListModule
+namespace api.Modules.TodoListModule
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ExceptionHandling : ExceptionFilterAttribute

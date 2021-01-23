@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace api.Application.Modules.TodoListModule.Migrations
+namespace api.Modules.TodoListModule.Migrations
 {
     [DbContext(typeof(TodoListContext))]
     partial class TodoListContextModelSnapshot : ModelSnapshot

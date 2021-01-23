@@ -4,11 +4,11 @@ using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
-using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Modules.TodoListModule.Domain.Models;
 using Microsoft.Extensions.Logging;
-using api.Application.Modules.TodoListModule.Exceptions;
+using api.Modules.TodoListModule.Exceptions;
 
-namespace api.Application.Modules.TodoListModule.Features
+namespace api.Modules.TodoListModule.Features
 {
     public record DeleteTodoListByIdCommand(int Id) : IRequest<int>;
 

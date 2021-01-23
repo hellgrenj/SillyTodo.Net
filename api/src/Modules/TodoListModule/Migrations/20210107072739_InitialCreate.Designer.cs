@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 
-namespace api.Application.Modules.TodoListModule.Migrations
+namespace api.Modules.TodoListModule.Migrations
 {
     [DbContext(typeof(TodoListContext))]
     [Migration("20210107072739_InitialCreate")]

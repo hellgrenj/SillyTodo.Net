@@ -1,8 +1,8 @@
 
-using api.Application.Modules.TodoListModule.Domain.Models;
+using api.Modules.TodoListModule.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Application.Modules.TodoListModule
+namespace api.Modules.TodoListModule
 {
     public class TodoListContext : DbContext
     {

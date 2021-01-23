@@ -3,7 +3,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace api.Application.Modules.TodoListModule
+namespace api.Modules.TodoListModule
 {
 
     public class InputValidation : ActionFilterAttribute
@@ -12,7 +12,7 @@ namespace api.Application.Modules.TodoListModule
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-
+            
             if (!filterContext.ModelState.IsValid)
             {
                 if (filterContext.HttpContext.Request.Method == "GET")
