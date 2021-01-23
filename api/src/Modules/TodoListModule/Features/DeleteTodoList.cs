@@ -1,13 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Persistence;
 using MediatR;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using api.Application.Modules.TodoListModule.Domain.Models;
-using api.Application.Exceptions;
 using Microsoft.Extensions.Logging;
+using api.Application.Modules.TodoListModule.Exceptions;
 
 namespace api.Application.Modules.TodoListModule.Features
 {

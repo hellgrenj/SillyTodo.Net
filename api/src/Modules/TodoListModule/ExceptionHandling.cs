@@ -1,13 +1,13 @@
 using System;
 using System.Net;
-using api.Application.Exceptions;
+using api.Application.Modules.TodoListModule.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace api.Infrastructure
+namespace api.Application.Modules.TodoListModule
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class ExceptionFilter : ExceptionFilterAttribute
+    public class ExceptionHandling : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {

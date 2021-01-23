@@ -13,5 +13,5 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build-env /app/out ./
-COPY --from=build-env /app/Persistence/Migrations ./
+COPY --from=build-env /app/Modules/TodoListModule/Migrations ./
 ENTRYPOINT ["dotnet", "./api.dll"]

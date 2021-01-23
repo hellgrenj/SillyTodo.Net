@@ -2,10 +2,9 @@
 
 
 
-using System;
 using System.Linq;
 using System.Threading;
-using api.Persistence;
+using api.Application.Modules.TodoListModule;
 using api.Application.Modules.TodoListModule.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

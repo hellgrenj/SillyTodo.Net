@@ -1,5 +1,4 @@
 using System;
-using api.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
-using api.Infrastructure;
 using FluentValidation.AspNetCore;
+using api.Application.Modules.TodoListModule;
 
 namespace api
 {
@@ -34,14 +33,12 @@ namespace api
             }));
             
             var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING");
+
+            // add every modules db context
             services.AddDbContext<TodoListContext>(options => options.UseNpgsql(connectionString));
             
             services.AddMediatR(typeof(Startup));
-            services.AddControllers(options =>
-            {
-                options.Filters.Add(typeof(ValidatorActionFilter));
-                options.Filters.Add(typeof(ExceptionFilter));
-            }).AddFluentValidation(o => { o.RegisterValidatorsFromAssemblyContaining<Startup>(); });
+            services.AddControllers().AddFluentValidation(o => { o.RegisterValidatorsFromAssemblyContaining<Startup>(); });
             
             services.AddSwaggerGen(c =>
             {
@@ -55,6 +52,7 @@ namespace api
                 .GetRequiredService<IServiceScopeFactory>()
                 .CreateScope())
             {
+                // updating todolist module 
                 using (var context = serviceScope.ServiceProvider.GetService<TodoListContext>())
                 {
                     context.Database.Migrate();

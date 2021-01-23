@@ -2,7 +2,7 @@
 using api.Application.Modules.TodoListModule.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api.Persistence
+namespace api.Application.Modules.TodoListModule
 {
     public class TodoListContext : DbContext
     {

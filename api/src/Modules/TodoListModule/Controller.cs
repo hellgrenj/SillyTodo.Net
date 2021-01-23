@@ -9,15 +9,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace api.Controllers
+namespace api.Application.Modules.TodoListModule
 {
-    // Input validation and error handling in action filters: Infrastructure/ValidationActionFilter.cs and Infrastructure/ExceptionFilter.cs
+    [ExceptionHandling]
+    [InputValidation]
     [ApiController]
-    [Route("[controller]")]
-    public class TodoListController : ControllerBase
+    [Route("todolist")]
+    public class Controller : ControllerBase
     {
         private readonly IMediator _mediator;
-        public TodoListController(IMediator mediator) => _mediator = mediator;
+        public Controller(IMediator mediator) => _mediator = mediator;
         [HttpGet]
         public async Task<List<TodoList>> Get() => await _mediator.Send(new GetAllTodoListsQuery());
 

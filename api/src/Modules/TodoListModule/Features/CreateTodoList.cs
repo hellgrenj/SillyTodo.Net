@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using api.Persistence;
 using MediatR;
 using api.Application.Modules.TodoListModule.Domain.Models;
 using FluentValidation;

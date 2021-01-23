@@ -3,13 +3,14 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace api.Infrastructure
+namespace api.Application.Modules.TodoListModule
 {
-    public class ValidatorActionFilter : IActionFilter
+
+    public class InputValidation : ActionFilterAttribute
     {
         public object JsonConvert { get; private set; }
 
-        public void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
 
             if (!filterContext.ModelState.IsValid)
@@ -32,9 +33,5 @@ namespace api.Infrastructure
             }
         }
 
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-
-        }
     }
 }
