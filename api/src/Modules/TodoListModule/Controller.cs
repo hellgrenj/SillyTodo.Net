@@ -12,7 +12,6 @@ using Microsoft.Extensions.Logging;
 namespace api.Modules.TodoListModule
 {
     [ExceptionHandling]
-    [InputValidation]
     [ApiController]
     [Route("todolist")]
     public class Controller : ControllerBase
