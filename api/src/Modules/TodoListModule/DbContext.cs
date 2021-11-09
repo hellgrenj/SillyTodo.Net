@@ -9,6 +9,7 @@ namespace api.Modules.TodoListModule
 
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<TodoListItem> TodoListItems { get; set; }
+        public DbSet<Dummy> Dummies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
