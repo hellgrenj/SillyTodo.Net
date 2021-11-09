@@ -33,6 +33,9 @@ namespace api
             }));
             
             var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING");
+            if(connectionString is null) {
+                connectionString = "Host=localhost;Database=silly;Username=silly;Password=silly";
+            }
 
             // add every modules db context
             services.AddDbContext<TodoListContext>(options => options.UseNpgsql(connectionString));
