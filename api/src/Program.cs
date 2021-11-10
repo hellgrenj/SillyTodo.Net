@@ -20,9 +20,10 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
 });
 var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING") ?? "Host=localhost;Database=silly;Username=silly;Password=silly";
-builder.Services.AddDbContext<TodoListContext>(options => options.UseNpgsql(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient);
+builder.Services.AddDbContext<TodoListContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddTransient<IRoutes<TodoListModuleRoutes>, TodoListModuleRoutes>();
 var app = builder.Build();
+
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1"));
 app.UseCors("corsPolicy");
