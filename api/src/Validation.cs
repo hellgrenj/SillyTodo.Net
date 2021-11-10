@@ -1,4 +1,6 @@
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
+
 public interface IValidationWrapper
 {
     Task<IResult> ValidateAndSend<T>(IValidator<T> validator, T cmd);

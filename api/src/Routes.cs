@@ -1,5 +1,9 @@
 using api.Modules.TodoListModule.Features;
-namespace api.Modules.TodoListModule;
+using Microsoft.AspNetCore.Builder;
+public interface IRoutes<T>
+{
+    void Register(WebApplication app);
+}
 public class TodoListModuleRoutes : IRoutes<TodoListModuleRoutes>
 {
     private readonly IMediator _mediator;
@@ -24,5 +28,4 @@ public class TodoListModuleRoutes : IRoutes<TodoListModuleRoutes>
         app.MapMethods("todolist/item", new string[] { "PATCH" }, async (CheckItemCommand command) => await _mediator.Send(command));
         app.MapDelete("todolist/item/{id}", async (int id) => await _mediator.Send(new DeleteItemByIdCommand(id)));
     }
-
 }

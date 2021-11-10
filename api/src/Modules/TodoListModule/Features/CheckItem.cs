@@ -23,5 +23,4 @@ public class CheckItemHandler : IRequestHandler<CheckItemCommand, int>
         _logger.LogInformation($"item(id={cmd.Id}).done changed to {cmd.Done}");
         return item.Id;
     }
-
 }
