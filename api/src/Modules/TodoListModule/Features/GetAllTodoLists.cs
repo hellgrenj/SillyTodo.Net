@@ -1,11 +1,4 @@
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
-using System.Collections.Generic;
-using System.Linq;
 using api.Modules.TodoListModule.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace api.Modules.TodoListModule.Features;
 
 public record GetAllTodoListsQuery() : IRequest<List<TodoList>>;

@@ -1,17 +1,8 @@
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
-using System.Linq;
+
 using api.Modules.TodoListModule.Domain.Models;
-using FluentValidation;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 using api.Modules.TodoListModule.Exceptions;
-
 namespace api.Modules.TodoListModule.Features;
-
 public record AddItemToListCommand(int ListId, string Name, bool Done) : IRequest<int>;
-
 public class AddItemToListCommandValidator : AbstractValidator<AddItemToListCommand>
 {
     public AddItemToListCommandValidator()
@@ -29,7 +20,6 @@ public class AddItemToListHandler : IRequestHandler<AddItemToListCommand, int>
         _db = db;
         _logger = logger;
     }
-
     public async Task<int> Handle(AddItemToListCommand cmd, CancellationToken cancellationToken)
     {
         var list = await _db.TodoLists.Where(l => l.Id == cmd.ListId).SingleOrDefaultAsync();

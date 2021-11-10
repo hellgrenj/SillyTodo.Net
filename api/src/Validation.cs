@@ -1,11 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation;
 using FluentValidation.Results;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-
 public interface IValidationWrapper
 {
     Task<IResult> ValidateAndSend<T>(IValidator<T> validator, T cmd);

@@ -1,8 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using api.Modules.TodoListModule.Domain.Models;
 using api.Modules.TodoListModule.Exceptions;
 

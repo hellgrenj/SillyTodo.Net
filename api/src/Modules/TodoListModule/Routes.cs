@@ -1,15 +1,6 @@
 using api.Modules.TodoListModule.Features;
-using FluentValidation;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-
 namespace api.Modules.TodoListModule;
-
-public interface ITodoListModuleRoutes
-{
-    void Register(WebApplication app);
-}
-public class TodoListModuleRoutes : ITodoListModuleRoutes
+public class TodoListModuleRoutes : IRoutes<TodoListModuleRoutes>
 {
     private readonly IMediator _mediator;
     private readonly IValidationWrapper _validationWrapper;

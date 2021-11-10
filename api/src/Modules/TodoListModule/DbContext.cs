@@ -1,12 +1,8 @@
 
 using api.Modules.TodoListModule.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace api.Modules.TodoListModule;
-
 public class TodoListContext : DbContext
-{
-
+{    
     public DbSet<TodoList> TodoLists { get; set; }
     public DbSet<TodoListItem> TodoListItems { get; set; }
     public DbSet<Dummy> Dummies { get; set; }

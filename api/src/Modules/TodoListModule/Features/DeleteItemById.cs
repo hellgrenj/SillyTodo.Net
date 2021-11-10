@@ -1,13 +1,5 @@
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
-using System.Linq;
-using FluentValidation;
 using api.Modules.TodoListModule.Domain.Models;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 using api.Modules.TodoListModule.Exceptions;
-
 namespace api.Modules.TodoListModule.Features;
 public record DeleteItemByIdCommand(int Id) : IRequest<int>;
 public class DeleteItemByIdHandler : IRequestHandler<DeleteItemByIdCommand, int>

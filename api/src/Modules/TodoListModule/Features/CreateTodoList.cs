@@ -1,10 +1,4 @@
-using System.Threading;
-using System.Threading.Tasks;
-using MediatR;
 using api.Modules.TodoListModule.Domain.Models;
-using FluentValidation;
-using Microsoft.Extensions.Logging;
-
 namespace api.Modules.TodoListModule.Features;
 
 public record CreateNewTodoListCommand(string Name) : IRequest<int>;
