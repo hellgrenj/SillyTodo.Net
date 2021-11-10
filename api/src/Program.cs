@@ -12,8 +12,8 @@ Swagger.Setup(builder);
 var connectionString = Environment.GetEnvironmentVariable("POSTGRES_CONNECTION_STRING") ?? "Host=localhost;Database=silly;Username=silly;Password=silly";
 builder.Services.AddDbContext<TodoListContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddTransient<IRoutes<TodoListModuleRoutes>, TodoListModuleRoutes>();
-var app = builder.Build();
 
+var app = builder.Build();
 Swagger.Use(app);
 Cors.Use(app);
 app.UseExceptionHandler(Exceptions.Handler);
