@@ -7,7 +7,7 @@ public interface IValidationWrapper
 }
 public class ValidationWrapper : IValidationWrapper
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator; 
     public ValidationWrapper(IMediator mediator) => _mediator = mediator;
     public async Task<IResult> ValidateAndSend<T>(IValidator<T> validator, T cmd)
     {

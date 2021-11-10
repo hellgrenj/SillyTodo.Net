@@ -8,7 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Logging.AddConsole();
 builder.Services.AddMediatR(typeof(Program));
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
-builder.Services.AddSingleton<IValidationWrapper, ValidationWrapper>();
+builder.Services.AddTransient<IValidationWrapper, ValidationWrapper>();
 builder.Services.AddCors(o => o.AddPolicy("corsPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
