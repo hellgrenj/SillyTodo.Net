@@ -1,5 +1,4 @@
 using api.Modules.TodoListModule.Domain.Models;
-using api.Modules.TodoListModule.Exceptions;
 namespace api.Modules.TodoListModule.Features;
 public record CheckItemCommand(int Id, bool Done) : IRequest<int>;
 public class CheckItemHandler : IRequestHandler<CheckItemCommand, int>

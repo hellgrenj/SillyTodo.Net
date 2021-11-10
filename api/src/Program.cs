@@ -1,5 +1,6 @@
 
 using api.Modules.TodoListModule;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
@@ -24,7 +25,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1"));
 app.UseCors("corsPolicy");
-app.UseExceptionHandler(ExceptionHandler.Handle);
+app.UseExceptionHandler(Exceptions.Handler);
 // update modules db and register modules routes
 var todoListContext = app.Services.GetService<TodoListContext>();
 todoListContext.Database.Migrate();

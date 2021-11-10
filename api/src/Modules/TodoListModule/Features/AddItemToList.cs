@@ -1,6 +1,5 @@
 
 using api.Modules.TodoListModule.Domain.Models;
-using api.Modules.TodoListModule.Exceptions;
 namespace api.Modules.TodoListModule.Features;
 public record AddItemToListCommand(int ListId, string Name, bool Done) : IRequest<int>;
 public class AddItemToListCommandValidator : AbstractValidator<AddItemToListCommand>
